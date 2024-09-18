@@ -15,7 +15,7 @@ public interface EmployeeMapper {
      * @param username
      * @return
      */
-    @Select("select * from employee where username = #{username}")
+    @Select("select * from sky_take_out.employee where username = #{username}")
     Employee getByUsername(String username);
 
     /**
@@ -33,4 +33,13 @@ public interface EmployeeMapper {
      * @return
      */
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 根据主键修改
+     * @param employee
+     */
+    void update(Employee employee);
+
+    @Select("select * from sky_take_out.employee where id=#{id}")
+    Employee getById(Long id);
 }
