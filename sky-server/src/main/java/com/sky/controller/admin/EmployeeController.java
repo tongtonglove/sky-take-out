@@ -24,9 +24,10 @@ import java.util.Map;
 /**
  * 员工管理
  */
-@RestController
-@RequestMapping("/admin/employee")
-@Slf4j
+
+@RestController//@RestController 是 @Controller 和 @ResponseBody 的组合注解，用于创建 RESTful 风格的 API。
+@RequestMapping("/admin/employee")//用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。
+@Slf4j//日志
 @Api(tags = "员工相关接口")
 public class EmployeeController {
 
