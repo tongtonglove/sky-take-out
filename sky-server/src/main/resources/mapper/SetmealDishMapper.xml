@@ -10,6 +10,7 @@
         </foreach>
     </select>
 
+
     <insert id="insertBatch">
         insert into sky_take_out.setmeal_dish
         (setmeal_id, dish_id, name, price, copies)
@@ -18,4 +19,5 @@
             (#{sd.setmealId},#{sd.dishId},#{sd.name},#{sd.price},#{sd.copies})
         </foreach>
     </insert>
+
 </mapper>
