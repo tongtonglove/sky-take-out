@@ -2,6 +2,7 @@ package com.sky.controller.user;
 
 import com.sky.dto.ShoppingCartDTO;
 import com.sky.entity.Category;
+import com.sky.entity.ShoppingCart;
 import com.sky.result.Result;
 import com.sky.service.ShoppingCartService;
 import io.swagger.annotations.Api;
@@ -29,5 +30,16 @@ public class ShoppingCartController {
     public Result add(@RequestBody ShoppingCartDTO shoppingCartDTO){
         shoppingCartService.addShoppingCart(shoppingCartDTO);
         return Result.success();
+    }
+
+    /**
+     * 查看购物车
+     * @return
+     */
+    @GetMapping("/list")
+    @ApiOperation("查看购物车")
+    public Result<List<ShoppingCart>> list(){
+        List<ShoppingCart> list=shoppingCartService.showShoppingCart();
+        return Result.success(list);
     }
 }
