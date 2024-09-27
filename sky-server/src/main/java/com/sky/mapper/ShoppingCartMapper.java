@@ -1,10 +1,7 @@
 package com.sky.mapper;
 
 import com.sky.entity.ShoppingCart;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -35,4 +32,35 @@ public interface ShoppingCartMapper {
      */
     @Delete("delete from sky_take_out.shopping_cart where user_id=#{userId}")
     void deleteByUserId(Long userId);
+
+
+    /**
+     * 根据菜品id查询购物车数据
+     * @param shoppingCart
+     * @return
+     */
+    @Select("select * from sky_take_out.shopping_cart where user_id=#{userId} and dish_id=#{dishId}")
+    ShoppingCart getByUserIdAndDishId(ShoppingCart shoppingCart);
+
+    /**
+     * 根据id修改商品数量
+     * @param cart
+     */
+    @Update("update sky_take_out.shopping_cart set number = #{number} where id=#{id}")
+    void updateNumberById(ShoppingCart cart);
+
+    /**
+     * 根据套餐查询购物车
+     * @param shoppingCart
+     * @return
+     */
+    @Select("select * from sky_take_out.shopping_cart where user_id=#{userId} and setmeal_id = #{setmealId}")
+    ShoppingCart getByUserIdAndSetmealId(ShoppingCart shoppingCart);
+
+    /**
+     * 根据id删除购物车数据
+     * @param id
+     */
+    @Delete("delete from sky_take_out.shopping_cart where id=#{id}")
+    void deleteByShoppingId(Long id);
 }

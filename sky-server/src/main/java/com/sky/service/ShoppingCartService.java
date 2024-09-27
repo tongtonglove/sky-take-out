@@ -22,4 +22,9 @@ public interface ShoppingCartService {
      * 清空购物车
      */
     void cleanShoppingCart();
+
+    /**
+     * 减少购物车
+     */
+    void subShoppingCart(ShoppingCartDTO shoppingCartDTO);
 }
